@@ -28,7 +28,7 @@ export default function App() {
             />
             <div>
               <h1 className="text-3xl font-bold mb-2">พาณิชย์ ทัพวร</h1>
-              <p className="text-gray-600 mb-4">Full Stack Developer | UI/UX Enthusiast | FullTech(CTO)</p>
+              <p className="text-gray-600 mb-4">Full Stack Developer | Software Engineer | FullTech(CTO)</p>
               <div className="flex gap-4">
                 <a href="https://github.com/variz-h264/" className="text-gray-600 hover:text-rose-400"><Github /></a>
                 <a href="mailto:panitthapwon@gmail.com" className="text-gray-600 hover:text-rose-400"><Mail /></a>
