@@ -8,11 +8,11 @@ export default function App() {
       icon: Layout,
       skills: [
         { name: 'React', level: 90 },
-        { name: 'Vue', level: 50 },
-        { name: 'Svelte', level: 50 },
-        { name: 'Next.js', level: 85 },
-        { name: 'Nuxt.js', level: 60 },
-        { name: 'SvelteKit', level: 20 },
+        { name: 'Vue', level: 40 },
+        { name: 'Svelte', level: 35 },
+        { name: 'Next.js', level: 90 },
+        { name: 'Nuxt.js', level: 40 },
+        { name: 'SvelteKit', level: 10 },
         { name: 'Tailwind CSS', level: 95 },
         { name: 'Bootstrap', level: 100 }
       ]
@@ -43,10 +43,12 @@ export default function App() {
       title: 'อื่นๆ',
       icon: Code2,
       skills: [
-        { name: 'Git', level: 60 },
-        { name: 'Docker', level: 40 },
-        { name: 'Firebase', level: 80 },
-        { name: 'Ubuntu', level: 10 }
+        { name: 'Git', level: 50 },
+        { name: 'Docker', level: 30 },
+        { name: 'Firebase', level: 40 },
+        { name: 'Ubuntu', level: 20 },
+        { name: 'Cloudflare', level: 25 },
+        { name: 'Prisma', level: 65 },
       ]
     }
   ];
@@ -78,7 +80,7 @@ export default function App() {
               <p className="text-gray-600 mb-4">Full Stack Developer | Software Engineer | FullTech(CTO)</p>
               <div className="flex gap-4">
                 <a href="https://github.com/variz-h264/" className="text-gray-600 hover:text-rose-400"><Github /></a>
-                <a href="mailto:panitthapwon@gmail.com" className="text-gray-600 hover:text-rose-400"><Mail /></a>
+                <a href="mailto:contact@varizz.site" className="text-gray-600 hover:text-rose-400"><Mail /></a>
               </div>
             </div>
           </div>
@@ -153,8 +155,8 @@ export default function App() {
             <h3 className="font-black text-xl text-rose-400 mb-4">ติดต่อ</h3>
             <p className="text-gray-600 mb-4">สนใจร่วมงานหรือมีข้อสงสัย? ติดต่อผมได้ที่</p>
             <div className="flex flex-col gap-2">
-                <a href="mailto:panitthapwon@gmail.com" className="flex items-center gap-2 text-gray-600 hover:text-rose-400">
-                    <Mail size={20} /> panitthapwon@gmail.com
+                <a href="mailto:contact@varizz.site" className="flex items-center gap-2 text-gray-600 hover:text-rose-400">
+                    <Mail size={20} /> contact@varizz.site
                 </a>
                 <a href="https://github.com/variz-h264/" className="flex items-center gap-2 text-gray-600 hover:text-rose-400">
                     <Github size={20} /> github.com/variz-h264
