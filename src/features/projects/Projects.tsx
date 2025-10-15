@@ -1,48 +1,12 @@
-
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Section from '../../components/layout/Section';
 import { Star, GitFork, Github } from 'lucide-react';
-
-interface Repo {
-  id: number;
-  name: string;
-  html_url: string;
-  description: string;
-  language: string;
-  stargazers_count: number;
-  forks_count: number;
-}
+import { useGitHubRepos } from '../../hooks/useGitHubRepos';
 
 export default function Projects() {
-  const [repos, setRepos] = useState<Repo[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { repos, loading, error } = useGitHubRepos('owariz');
   const [currentPage, setCurrentPage] = useState(1);
   const reposPerPage = 6;
-
-  useEffect(() => {
-    async function fetchRepos() {
-      try {
-        // Fetch all repositories, sorted by last pushed
-        const response = await fetch('https://api.github.com/users/owariz/repos?sort=pushed&direction=desc');
-        if (!response.ok) {
-          throw new Error('Failed to fetch data from GitHub');
-        }
-        const data = await response.json();
-        setRepos(data);
-      } catch (err) {
-        if (err instanceof Error) {
-            setError(err.message);
-        } else {
-            setError('An unknown error occurred');
-        }
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchRepos();
-  }, []);
 
   // Pagination logic
   const indexOfLastRepo = currentPage * reposPerPage;
