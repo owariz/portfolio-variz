@@ -1,18 +1,139 @@
-import Section from "../../components/layout/Section";
+
+import { useEffect, useState } from 'react';
+import Section from '../../components/layout/Section';
+import { Star, GitFork, Github } from 'lucide-react';
+
+interface Repo {
+  id: number;
+  name: string;
+  html_url: string;
+  description: string;
+  language: string;
+  stargazers_count: number;
+  forks_count: number;
+}
 
 export default function Projects() {
+  const [repos, setRepos] = useState<Repo[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const reposPerPage = 6;
+
+  useEffect(() => {
+    async function fetchRepos() {
+      try {
+        // Fetch all repositories, sorted by last pushed
+        const response = await fetch('https://api.github.com/users/owariz/repos?sort=pushed&direction=desc');
+        if (!response.ok) {
+          throw new Error('Failed to fetch data from GitHub');
+        }
+        const data = await response.json();
+        setRepos(data);
+      } catch (err) {
+        if (err instanceof Error) {
+            setError(err.message);
+        } else {
+            setError('An unknown error occurred');
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchRepos();
+  }, []);
+
+  // Pagination logic
+  const indexOfLastRepo = currentPage * reposPerPage;
+  const indexOfFirstRepo = indexOfLastRepo - reposPerPage;
+  const currentRepos = repos.slice(indexOfFirstRepo, indexOfLastRepo);
+  const totalPages = Math.ceil(repos.length / reposPerPage);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
   return (
     <Section title="ผลงาน">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="border rounded-md overflow-hidden">
-              <img src="/images/pmtech-report.png" alt="Project 1" className="w-full" />
-              <div className="p-4">
-              <h4 className="font-bold mb-2">Report Platform</h4>
-              <p className="text-gray-600 mb-2">เว็บไซต์สำหรับการบันทึกคะแนนพฤติกรรมนักศึกษา พัฒนาด้วย Next.js และ MongoDB</p>
-              {/* <a href="#" className="text-rose-400 hover:underline">ดูรายละเอียด</a> */}
-              </div>
+      {loading && <p className='text-center'>Loading projects...</p>}
+      {error && <p className="text-red-500 text-center">{error}</p>}
+      {!loading && !error && (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 min-h-[450px]">
+            {currentRepos.map((repo) => (
+              <a 
+                key={repo.id} 
+                href={repo.html_url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block p-4 border border-gray-200 rounded-md overflow-hidden transition-shadow hover:shadow-md hover:border-rose-200"
+              >
+                <h4 className="font-bold mb-2 truncate">{repo.name}</h4>
+                <p className="text-gray-600 mb-3 text-sm h-10 overflow-hidden">{repo.description || 'No description available.'}</p>
+                <div className="flex items-center justify-between text-sm text-gray-500">
+                  <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-1">
+                          <Star size={16} />
+                          <span>{repo.stargazers_count}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                          <GitFork size={16} />
+                          <span>{repo.forks_count}</span>
+                      </div>
+                  </div>
+                  {repo.language && (
+                    <span className="px-2 py-1 text-xs text-white bg-rose-400 rounded-full">
+                      {repo.language}
+                    </span>
+                  )}
+                </div>
+              </a>
+            ))}
           </div>
+
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-4 mt-6">
+              <button 
+                onClick={handlePrevPage} 
+                disabled={currentPage === 1}
+                className="px-4 py-2 text-sm font-semibold text-white bg-gray-600 rounded-md disabled:bg-gray-300 disabled:cursor-not-allowed hover:cursor-pointer"
+              >
+                Previous
+              </button>
+              <span className="text-gray-600">
+                Page {currentPage} of {totalPages}
+              </span>
+              <button 
+                onClick={handleNextPage} 
+                disabled={currentPage === totalPages}
+                className="px-4 py-2 text-sm font-semibold text-white bg-gray-600 rounded-md disabled:bg-gray-300 disabled:cursor-not-allowed hover:cursor-pointer"
+              >
+                Next
+              </button>
+            </div>
+          )}
+        </>
+      )}
+      <div className="text-center mt-6">
+        <a 
+          href="https://github.com/owariz?tab=repositories" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-gray-800 rounded-md hover:bg-gray-900"
+        >
+          <Github size={16} />
+          View All on GitHub
+        </a>
       </div>
     </Section>
-  )
+  );
 }
