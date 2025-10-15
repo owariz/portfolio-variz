@@ -1,5 +1,4 @@
-// import { useState, useEffect } from 'react';
-import { Code2, Database, Layout, Terminal } from 'lucide-react';
+import { Code2, Database, Layout, Terminal } from "lucide-react";
 
 export default function SkillsSection() {
 //   const [githubStats, setGithubStats] = useState({
@@ -124,8 +123,8 @@ export default function SkillsSection() {
 
 //   if (githubStats.loading) {
 //     return (
-//       <div className="bg-white rounded-md shadow-md py-6 px-4 mb-5">
-//         <h3 className="font-black text-2xl text-rose-500 mb-6 flex items-center">
+//       <div className="px-4 py-6 mb-5 bg-white rounded-md shadow-md">
+//         <h3 className="flex items-center mb-6 text-2xl font-black text-rose-500">
 //           <Code2 className="mr-2" />
 //           กำลังโหลดข้อมูล...
 //         </h3>
@@ -135,8 +134,8 @@ export default function SkillsSection() {
 
 //   if (githubStats.error) {
 //     return (
-//       <div className="bg-white rounded-md shadow-md py-6 px-4 mb-5">
-//         <h3 className="font-black text-2xl text-rose-500 mb-6 flex items-center">
+//       <div className="px-4 py-6 mb-5 bg-white rounded-md shadow-md">
+//         <h3 className="flex items-center mb-6 text-2xl font-black text-rose-500">
 //           <Code2 className="mr-2" />
 //           ไม่สามารถโหลดข้อมูลได้
 //         </h3>
@@ -145,23 +144,23 @@ export default function SkillsSection() {
 //   }
 
   return (
-    <div className="bg-white rounded-md shadow-md py-6 px-4 mb-5">
-      <h3 className="font-black text-xl text-rose-400 mb-4 flex items-center">
+    <div className="px-4 py-6 mb-5 bg-white rounded-md shadow-md">
+      <h3 className="flex items-center mb-4 text-xl font-black text-rose-400">
         <Code2 className="mr-2" />
         ทักษะและความเชี่ยวชาญ
       </h3>
       
       {/* GitHub Language Stats */}
       {/* <div className="mb-8">
-        <h4 className="font-bold text-lg mb-4 text-gray-700">สถิติภาษาโปรแกรมมิ่งจาก GitHub</h4>
+        <h4 className="mb-4 text-lg font-bold text-gray-700">สถิติภาษาโปรแกรมมิ่งจาก GitHub</h4>
         <div className="space-y-4">
           {githubStats.languages.map((lang) => (
             <div key={lang.name}>
               <div className="flex justify-between mb-1">
-                <span className="text-gray-700 font-medium">{lang.name}</span>
+                <span className="font-medium text-gray-700">{lang.name}</span>
                 <span className="text-gray-500">{lang.level} ({lang.percentage}%)</span>
               </div>
-              <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div className="h-2 overflow-hidden bg-gray-200 rounded-full">
                 <div
                   className="h-full transition-all duration-1000 ease-out"
                   style={{
@@ -176,12 +175,12 @@ export default function SkillsSection() {
       </div> */}
 
       {/* Skill Categories */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {skillCategories.map((category) => {
           const Icon = category.icon;
           return (
-            <div key={category.title} className="bg-gray-50 p-4 rounded-md border border-gray-100 hover:shadow-md transition-shadow">
-              <h4 className="font-bold text-lg mb-4 text-gray-600 flex items-center">
+            <div key={category.title} className="p-4 transition-shadow border border-gray-100 rounded-md bg-gray-50 hover:shadow-md">
+              <h4 className="flex items-center mb-4 text-lg font-bold text-gray-600">
                 <Icon className="mr-2 text-rose-500" />
                 {category.title}
               </h4>
@@ -192,9 +191,9 @@ export default function SkillsSection() {
                       <span className="text-gray-600">{skill.name}</span>
                       <span className="text-gray-500">{skill.level}%</span>
                     </div>
-                    <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="h-2 overflow-hidden bg-gray-200 rounded-full">
                       <div
-                        className="h-full bg-rose-400 transition-all duration-1000 ease-out"
+                        className="h-full transition-all duration-1000 ease-out bg-rose-400"
                         style={{ width: `${skill.level}%` }}
                       />
                     </div>
