@@ -1,5 +1,4 @@
-import { Github, Mail } from 'lucide-react';
-import { Code2, Database, Layout, Terminal } from 'lucide-react';
+import { Code2, Database, Layout, Terminal, Github, Mail } from 'lucide-react';
 
 export default function App() {
   const skillCategories = [
@@ -56,30 +55,30 @@ export default function App() {
   return (
     <>
     <div className="container max-w-3xl mx-auto ">
-      <div className="px-4 md:px-0 pt-5 md:pt-10">
+      <div className="px-4 pt-5 md:px-0 md:pt-10">
         {/* Navbar */}
-        <div className="bg-white rounded-md shadow-sm py-2 px-4 mb-5">
-          <div className="flex flex-row justify-between items-center">
-            <h3 className="font-black text-xl text-rose-400">Variz</h3>
-            <p className="font-bold text-1xl text-gray-400">Portfolio website</p>
+        <div className="px-4 py-2 mb-5 bg-white rounded-md shadow-sm">
+          <div className="flex flex-row items-center justify-between">
+            <h3 className="text-xl font-black text-rose-400">Variz</h3>
+            <p className="font-bold text-gray-400 text-1xl">Portfolio website</p>
           </div>
         </div>
         {/* End Navbar */}
 
         {/* Hero Section */}
-        <div className="bg-white rounded-md shadow-sm py-6 px-4 mb-5">
-          <div className="flex flex-col md:flex-row items-center gap-6">
+        <div className="px-4 py-6 mb-5 bg-white rounded-md shadow-sm">
+          <div className="flex flex-col items-center gap-6 md:flex-row">
           <img 
               src="/images/profile.jpg" 
               alt="Profile" 
-              className="rounded-full w-36 h-36 object-cover bg-black"
+              className="object-cover bg-black rounded-full w-36 h-36"
               loading="lazy"
             />
             <div>
-              <h1 className="text-3xl font-bold mb-2">พาณิชย์ ทัพวร</h1>
-              <p className="text-gray-600 mb-4">Full Stack Developer | Software Engineer | FullTech(CTO)</p>
+              <h1 className="mb-2 text-3xl font-bold">พาณิชย์ ทัพวร</h1>
+              <p className="mb-4 text-gray-600">Full Stack Developer | Software Engineer | FullTech(CTO)</p>
               <div className="flex gap-4">
-                <a href="https://github.com/variz-h264/" className="text-gray-600 hover:text-rose-400"><Github /></a>
+                <a href="https://github.com/owariz/" className="text-gray-600 hover:text-rose-400"><Github /></a>
                 <a href="mailto:contact@varizz.site" className="text-gray-600 hover:text-rose-400"><Mail /></a>
               </div>
             </div>
@@ -87,9 +86,9 @@ export default function App() {
         </div>
 
         {/* About Me */}
-        <div className="bg-white rounded-md shadow-sm py-6 px-4 mb-5">
-              <h3 className="font-black text-xl text-rose-400 mb-4">เกี่ยวกับฉัน</h3>
-              <p className="text-gray-600 mb-4">
+        <div className="px-4 py-6 mb-5 bg-white rounded-md shadow-sm">
+              <h3 className="mb-4 text-xl font-black text-rose-400">เกี่ยวกับฉัน</h3>
+              <p className="mb-4 text-gray-600">
                 สวัสดีครับ! ผมเป็นนักพัฒนา Full Stack ที่มีความหลงใหลในการสร้างแอปพลิเคชันที่สวยงามและใช้งานง่าย 
                 มีประสบการณ์ในการพัฒนาเว็บไซต์มากกว่า 5 ปี โดยเชี่ยวชาญใน React, Node.js, PHP, Python และ UI/UX Design
                 และในปัจจุบันนี้ผมทำงานกับ FullTect เป็นองค์กรที่ตัวผมกับเพื่อนๆได้ร่วมกันก่อตั้ง
@@ -97,19 +96,19 @@ export default function App() {
             </div>
 
             {/* Skills */}
-            <div className="bg-white rounded-md shadow-md py-6 px-4 mb-5">
-          <h3 className="font-black text-xl text-rose-400 mb-4 flex items-center">
+            <div className="px-4 py-6 mb-5 bg-white rounded-md shadow-md">
+          <h3 className="flex items-center mb-4 text-xl font-black text-rose-400">
             <Code2 className="mr-2" />
             ทักษะและความเชี่ยวชาญ
           </h3>
 
           {/* Skill Categories */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {skillCategories.map((category) => {
               const Icon = category.icon;
               return (
-                <div key={category.title} className="bg-gray-50 p-4 rounded-md border border-gray-100 hover:shadow-md transition-shadow">
-                  <h4 className="font-bold text-lg mb-4 text-gray-600 flex items-center">
+                <div key={category.title} className="p-4 transition-shadow border border-gray-100 rounded-md bg-gray-50 hover:shadow-md">
+                  <h4 className="flex items-center mb-4 text-lg font-bold text-gray-600">
                     <Icon className="mr-2 text-rose-500" />
                     {category.title}
                   </h4>
@@ -120,9 +119,9 @@ export default function App() {
                           <span className="text-gray-600">{skill.name}</span>
                           <span className="text-gray-500">{skill.level}%</span>
                         </div>
-                        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div className="h-2 overflow-hidden bg-gray-200 rounded-full">
                           <div
-                            className="h-full bg-rose-400 transition-all duration-1000 ease-out"
+                            className="h-full transition-all duration-1000 ease-out bg-rose-400"
                             style={{ width: `${skill.level}%` }}
                           />
                         </div>
@@ -136,14 +135,14 @@ export default function App() {
         </div>
 
         {/* Projects */}
-        <div className="bg-white rounded-md shadow-sm py-6 px-4 mb-5">
-            <h3 className="font-black text-xl text-rose-400 mb-4">ผลงาน</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="border rounded-md overflow-hidden">
+        <div className="px-4 py-6 mb-5 bg-white rounded-md shadow-sm">
+            <h3 className="mb-4 text-xl font-black text-rose-400">ผลงาน</h3>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div className="overflow-hidden border rounded-md">
                     <img src="/images/pmtech-report.png" alt="Project 1" className="w-full" />
                     <div className="p-4">
-                    <h4 className="font-bold mb-2">Report Platform</h4>
-                    <p className="text-gray-600 mb-2">เว็บไซต์สำหรับการบันทึกคะแนนพฤติกรรมนักศึกษา พัฒนาด้วย Next.js และ MongoDB</p>
+                    <h4 className="mb-2 font-bold">Report Platform</h4>
+                    <p className="mb-2 text-gray-600">เว็บไซต์สำหรับการบันทึกคะแนนพฤติกรรมนักศึกษา พัฒนาด้วย Next.js และ MongoDB</p>
                     {/* <a href="#" className="text-rose-400 hover:underline">ดูรายละเอียด</a> */}
                     </div>
                 </div>
@@ -151,22 +150,22 @@ export default function App() {
         </div>
 
         {/* Contact */}
-        <div className="bg-white rounded-md shadow-sm py-6 px-4 mb-5">
-            <h3 className="font-black text-xl text-rose-400 mb-4">ติดต่อ</h3>
-            <p className="text-gray-600 mb-4">สนใจร่วมงานหรือมีข้อสงสัย? ติดต่อผมได้ที่</p>
+        <div className="px-4 py-6 mb-5 bg-white rounded-md shadow-sm">
+            <h3 className="mb-4 text-xl font-black text-rose-400">ติดต่อ</h3>
+            <p className="mb-4 text-gray-600">สนใจร่วมงานหรือมีข้อสงสัย? ติดต่อผมได้ที่</p>
             <div className="flex flex-col gap-2">
                 <a href="mailto:contact@varizz.site" className="flex items-center gap-2 text-gray-600 hover:text-rose-400">
                     <Mail size={20} /> contact@varizz.site
                 </a>
-                <a href="https://github.com/variz-h264/" className="flex items-center gap-2 text-gray-600 hover:text-rose-400">
-                    <Github size={20} /> github.com/variz-h264
+                <a href="https://github.com/owariz/" className="flex items-center gap-2 text-gray-600 hover:text-rose-400">
+                    <Github size={20} /> github.com/owariz
                 </a>
             </div>
         </div>
 
         {/* Footer */}
-        <div className="text-center py-4 text-gray-500">
-          <p>© 2024 variz. All rights reserved.</p>
+        <div className="py-4 text-center text-gray-500">
+          <p>© 2024 - { new Date().getFullYear() } variz.site All rights reserved.</p>
         </div>
       </div>
     </div>
