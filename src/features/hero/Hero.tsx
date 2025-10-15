@@ -12,10 +12,10 @@ export default function Hero() {
         />
         <div>
           <h1 className="mb-2 text-3xl font-bold">พาณิชย์ ทัพวร</h1>
-          <p className="mb-4 text-gray-600">Full Stack Developer | Software Engineer | FullTech(CTO)</p>
+          <p className="mb-4 text-gray-600">Full Stack Developer | Software Engineer</p>
           <div className="flex gap-4">
             <a href="https://github.com/owariz/" className="text-gray-600 hover:text-rose-400"><Github /></a>
-            <a href="mailto:contact@varizz.site" className="text-gray-600 hover:text-rose-400"><Mail /></a>
+            <a href="mailto:panitthapwon@gmail.com" className="text-gray-600 hover:text-rose-400"><Mail /></a>
           </div>
         </div>
       </div>
